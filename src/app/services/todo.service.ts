@@ -11,7 +11,7 @@ export class TodoService {
      localStorage.setItem(key, JSON.stringify(value));
   }
 
-  public getItem(key: string) {
+  public getItem(key: any) {
     return localStorage.getItem(JSON.parse(key));
   }
 

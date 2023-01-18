@@ -24,7 +24,7 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoService.setItem('form', 'todoName');
-    console.log('decrpted data ', this.todoService.getItem('form'));
+    console.log('check', this.todoService.getItem(this.form));
   }
 
 
