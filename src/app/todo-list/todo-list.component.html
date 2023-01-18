@@ -1,0 +1,14 @@
+<h1>todos</h1>
+
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input type="text" matInput formControlName="todoName" placeholder="Ex. pat@example.com">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="addTodo()" [disabled]="!form.valid">Create todo</button>
+</form>
+
+<div>
+  <todo-todo-item *ngFor="let todo of todoList" [todoName]="todo.name"></todo-todo-item>
+</div>
