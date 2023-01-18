@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {Todo} from "../interfaces/todo";
+import {TodoService} from "../services/todo.service";
 
 @Component({
   selector: 'todo-todo-list',
@@ -16,11 +17,16 @@ export class TodoListComponent implements OnInit {
 
   todoList: Todo[] = [];
 
-  constructor(private readonly formBuilder: FormBuilder) {
+  constructor(
+    private todoService: TodoService,
+    private readonly formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.todoService.setItem('form', 'todoName');
+    console.log('decrpted data ', this.todoService.getItem('form'));
   }
+
 
   addTodo(): void {
     const todoItem: Todo = {
