@@ -8,11 +8,11 @@ export class TodoService {
 
   constructor() { }
   public setItem(key: string, value: string) {
-     localStorage.setItem(key, JSON.stringify(value));
+     localStorage.setItem(key, value);
   }
 
-  public getItem(key: any) {
-    return localStorage.getItem(JSON.parse(key));
+  public getItem(key: string) {
+    return localStorage.getItem(key);
   }
 
   public removeItem(key: string) {
