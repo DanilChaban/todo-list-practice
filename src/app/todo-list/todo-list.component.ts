@@ -16,24 +16,25 @@ export class TodoListComponent implements OnInit {
   });
 
   todoList: Todo[] = [];
-
   constructor(
     private todoService: TodoService,
     private readonly formBuilder: FormBuilder) {
+    console.log(JSON.parse(localStorage.getItem('todo-list')!));
   }
 
   ngOnInit(): void {
-    this.todoService.setItem('form', 'todoName');
-    this.todoService.getItem('form')
   }
-
 
   addTodo(): void {
     const todoItem: Todo = {
       name: this.form.get('todoName')?.getRawValue(),
       id: new Date().getSeconds()
     };
-    this.todoList.push(todoItem)
+    this.todoList.push(todoItem);
+  }
+
+  onSubmit() {
+    localStorage.setItem('todo-list', JSON.stringify(this.todoList));
   }
 
 }

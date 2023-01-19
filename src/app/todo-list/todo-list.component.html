@@ -1,12 +1,11 @@
 <h1>todos</h1>
 
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-form-field>
-    <mat-label>Email</mat-label>
-    <input type="text" matInput formControlName="todoName" placeholder="Ex. pat@example.com">
+    <input type="text" matInput formControlName="todoName" placeholder="Write text...">
   </mat-form-field>
 
-  <button mat-raised-button color="primary" (click)="addTodo()" [disabled]="!form.valid">Create todo</button>
+  <button type="submit" mat-raised-button color="primary" (click)="addTodo()" [disabled]="!form.valid">Create todo</button>
 </form>
 
 <div>

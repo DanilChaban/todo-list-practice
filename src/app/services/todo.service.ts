@@ -6,21 +6,14 @@ import {Todo} from "../interfaces/todo";
 })
 export class TodoService {
 
-  constructor() { }
-  public setItem(key: string, value: string) {
-     localStorage.setItem(key, value);
+  constructor() {
   }
 
-  public getItem(key: string) {
-    return localStorage.getItem(key);
+  public set(key: string, value: any) {
+    localStorage.setItem(key, JSON.stringify(value));
   }
 
-  public removeItem(key: string) {
-    localStorage.removeItem(key);
+  public get(key: string): string {
+    return JSON.parse(localStorage.getItem(key)!);
   }
-
-  public clear(): void {
-    localStorage.clear();
-  }
-
 }
