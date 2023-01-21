@@ -1,13 +1,31 @@
 <h1>todos</h1>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form">
   <mat-form-field>
-    <input type="text" matInput formControlName="todoName" placeholder="Write text...">
+    <input type="text" matInput formControlName="todoName" placeholder="Write text..." autofocus>
   </mat-form-field>
 
-  <button type="submit" mat-raised-button color="primary" (click)="addTodo()" [disabled]="!form.valid">Create todo</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="addTodo()"
+    [disabled]="!form.valid"
+  >
+    Create todo
+  </button>
 </form>
 
 <div>
-  <todo-todo-item *ngFor="let todo of todoList" [todoName]="todo.name"></todo-todo-item>
+  <todo-todo-item
+    *ngFor="let todo of todoList"
+    [todoName]="todo.name"
+    [todoId]="todo.id"
+    (remove)="removeItem($event)"
+  >
+  </todo-todo-item>
 </div>
+
+
+
+
+

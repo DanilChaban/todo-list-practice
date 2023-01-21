@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {Todo} from "../interfaces/todo";
-import {TodoService} from "../services/todo.service";
 
 @Component({
   selector: 'todo-todo-list',
@@ -10,31 +9,31 @@ import {TodoService} from "../services/todo.service";
 })
 export class TodoListComponent implements OnInit {
 
-
   form = this.formBuilder.group({
-    todoName: ['', Validators.required]
+    todoName: ['', Validators.required],
   });
 
   todoList: Todo[] = [];
-  constructor(
-    private todoService: TodoService,
-    private readonly formBuilder: FormBuilder) {
-    console.log(JSON.parse(localStorage.getItem('todo-list')!));
+
+  constructor(private readonly formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.todoList = JSON.parse(localStorage.getItem('todo-list')!);
   }
 
   addTodo(): void {
     const todoItem: Todo = {
       name: this.form.get('todoName')?.getRawValue(),
-      id: new Date().getSeconds()
+      id: Date.now()
     };
     this.todoList.push(todoItem);
-  }
-
-  onSubmit() {
     localStorage.setItem('todo-list', JSON.stringify(this.todoList));
   }
 
+  removeItem(event: number) {
+    const remove = this.todoList.findIndex(el => el.id === event);
+
+    this.todoList.splice(remove, 1);
+  }
 }

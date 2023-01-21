@@ -1,5 +1,9 @@
-<div *ngIf="deleteItem" class="deleteItem">
+<div class="deleteItem">
+  <mat-checkbox></mat-checkbox>
   <p>{{todoName}}</p>
-
-  <button mat-raised-button (click)="deleteItem = false">Basic</button>
+  <button mat-raised-button (click)="removeItem()">delete</button>
 </div>
+
+
+
+

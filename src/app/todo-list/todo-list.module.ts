@@ -7,19 +7,24 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {ReactiveFormsModule} from "@angular/forms";
 import { TodoItemComponent } from './todo-item/todo-item.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
-  declarations: [
-    TodoListComponent,
-    TodoItemComponent
-  ],
-  imports: [
-    CommonModule,
-    TodoListRoutingModule,
-    MatInputModule,
-    MatButtonModule,
-    ReactiveFormsModule
-  ]
+    declarations: [
+        TodoListComponent,
+        TodoItemComponent
+    ],
+    exports: [
+        TodoItemComponent
+    ],
+    imports: [
+        CommonModule,
+        TodoListRoutingModule,
+        MatInputModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatCheckboxModule
+    ]
 })
 export class TodoListModule { }
